@@ -6,7 +6,7 @@ public class AvionComercial extends Avion {
     }
 
     public int volar(int distancia) {
-        int combustibleNecesario = distancia * consumoCombustible;
+        int combustibleNecesario = distancia * getConsumoCombustible();
 
         return combustibleNecesario;
     }

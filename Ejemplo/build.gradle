@@ -1,5 +1,14 @@
 plugins {
     id 'java'
+    id 'jacoco'
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+    dependsOn test
 }
 
 group 'org.example'
@@ -10,10 +19,29 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.openjdk.jmh:jmh-core:1.35'
+    implementation 'junit:junit:4.13.2'
+    implementation 'org.testng:testng:7.1.0'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.35'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testImplementation 'org.mockito:mockito-core:5.2.0'
+    testRuntimeOnly 'org.mockito:mockito-core:5.2.0'
+
+    implementation 'org.openjdk.jmh:jmh-core:1.35'
+    annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.35'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 test {
     useJUnitPlatform()
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/test.exec")
+    }
 }

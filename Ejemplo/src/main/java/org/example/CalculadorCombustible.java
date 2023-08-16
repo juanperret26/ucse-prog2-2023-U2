@@ -1,5 +1,6 @@
 package org.example;
 
+
 public class CalculadorCombustible {
     private static CalculadorCombustible instance;
     private CalculadorCombustible() {}
@@ -12,6 +13,6 @@ public class CalculadorCombustible {
     }
 
     public int calcularCombustible(Avion avion, int distancia) {
-        return avion.volar(distancia);
-    }
+            return avion.volar(distancia);
+        }
 }
